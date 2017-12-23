@@ -2,20 +2,25 @@
   (:require [advent.day3 :refer :all]
             [clojure.test :refer :all]))
 
-(deftest test-board-size
-  (is (= 1 (board-size 1)))
-  (is (= 2 (board-size 2)))
-  (is (= 2 (board-size 4)))
-  (is (= 3 (board-size 5)))
-  (is (= 3 (board-size 9)))
-  (is (= 4 (board-size 10)))
-  (is (= 4 (board-size 16)))
-  (is (= 5 (board-size 17))))
+(def my-input 277678)
+
+(deftest test-xy-distance
+  (is (= 0 (xy-distance [0 0])))
+  (is (= 1 (xy-distance [0 1])))
+  (is (= 5 (xy-distance [-5 0])))
+  (is (= 10 (xy-distance [5 -5])))
+  (is (= 10 (xy-distance [5 -5]))))
 
 (deftest test-part1
   (is (= 0 (part1 1)))
-  (is (= 12 (part1 3)))
+  (is (= 3 (part1 12)))
   (is (= 2 (part1 23)))
-  (is (= 1024 (part1 31))))
+  (is (= 31 (part1 1024)))
+  (is (= 475 (part1 my-input))))
 
-
+(deftest test-part2
+  (is (= 2 (part2 1)))
+  (is (- 4 (part2 2)))
+  (is (= 23 (part2 15)))
+  (is (= 747 (part2 701)))
+  (is (= 1 (part2 my-input))))
