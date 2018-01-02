@@ -13,6 +13,11 @@
 (defn move [from direction]
   (mapv + from (directions direction)))
 
+(defn distance [[x y z]]
+  (max (Math/abs x)
+       (Math/abs y)
+       (Math/abs z)))
+
 (defn moves
   ([steps]
    (moves [0 0 0] steps))
@@ -29,11 +34,6 @@
          (recur new-position
                 (max max-distance new-distance)
                 (rest steps)))))))
-
-(defn distance [[x y z]]
-  (max (Math/abs x)
-       (Math/abs y)
-       (Math/abs z)))
 
 (defn parse-moves [move-str]
   (->> (string/split move-str #",")
